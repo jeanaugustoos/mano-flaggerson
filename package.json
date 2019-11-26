@@ -1,0 +1,26 @@
+{
+  "name": "mano-flaggerson",
+  "version": "0.0.1",
+  "description": "Feature flags management",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/app/index.js",
+    "test": "ava"
+  },
+  "author": "Jean Augusto Silva <jeanaugustoos@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cuid": "^2.1.6",
+    "dynamoose": "^1.11.1",
+    "express": "^4.17.1",
+    "joi": "^14.3.1",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "ava": "^2.4.0",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "nodemon": "^2.0.1"
+  }
+}
