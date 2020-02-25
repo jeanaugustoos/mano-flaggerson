@@ -2,3 +2,15 @@
 
 # mano-flaggerson
 Feature flag management
+
+## Development
+
+## How it works?
+
+### Infrastructure
+
+### Project
+
+## License
+
+[MIT](LICENSE.md)

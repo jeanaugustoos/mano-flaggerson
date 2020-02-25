@@ -1,0 +1,43 @@
+version: '2.1'
+
+services:
+  server:
+    build: .
+    entrypoint: npx nodemon src/index.js
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=test
+      - PORT=3000
+    volumes:
+      - .:/mano-flaggerson
+      - /mano-flaggerson/node_modules
+    depends_on:
+      - postgres
+    links:
+      - postgres
+
+  postgres:
+    image: postgres:12.2-alpine
+    ports:
+      - 5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=fl@gg3rs0n
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  
+  migrate:
+    build: .
+    entrypoint: npx sequelize-cli db:migrate --config src/config/database.js --migrations-path src/database/migrations/
+    environment:
+      - API_ENV=test
+    volumes:
+      - .:/mano-flaggerson
+      - /mano-flaggerson/node_modules
+    depends_on:
+      postgres:
+        condition: service_healthy
