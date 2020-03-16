@@ -34,6 +34,7 @@ const options = {
     { fields: ['account_id', 'owner_id'] },
     { fields: ['account_id', 'owner_id', 'key'] },
   ],
+  tableName: 'Features',
 }
 
 const create = (database) => database.define('Feature', attributes, options)
